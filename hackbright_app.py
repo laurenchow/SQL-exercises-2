@@ -38,7 +38,7 @@ Grade %s """ % (row[0], row[1], row[2], row[3])
 def get_all_project_grades(project_title):
     query = """SELECT first_name, last_name, project_title, grade from Students JOIN 
     Grades on Students.github=Grades.student_github WHERE project_title = ?"""
-    DB.execute(query,(project_title))
+    DB.execute(query,(project_title,))
     row = DB.fetchall()
     print row
 
