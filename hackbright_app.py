@@ -56,14 +56,14 @@ def show_all_grades(student_github):
     LEFT JOIN Grades ON github = student_github WHERE github = ?"""
     DB.execute(query,(student_github,))
     row = DB.fetchall()
-    print row 
+    return row 
   
-    for i in range(len(row)):
-        print """\
-    Student: %s %s
-    Project: %s
-    Grade: %s""" % (row[i][0], row[i][1], row[i][2], row[i][3])
-        i+=1
+    # for i in range(len(row)):
+    #     print """\
+    # Student: %s %s
+    # Project: %s
+    # Grade: %s""" % (row[i][0], row[i][1], row[i][2], row[i][3])
+    #     i+=1
 
 def connect_to_db():
     global DB, CONN
