@@ -39,9 +39,11 @@ def get_student_by_github(github):
     query = """SELECT first_name, last_name, github FROM Students WHERE github = ?"""
     DB.execute(query, (github,))
     row = DB.fetchone()
-    print """\
-Student: %s %s
-Github account: %s"""%(row[0], row[1], row[2])
+    return list(row)
+
+# Student: %s %s
+# Github account: %s"""%(row[0], row[1], row[2])
+
 
 def grade_student(student_github, project_title, grade):
     query = """INSERT INTO Grades values (?,?,?)"""
@@ -73,12 +75,12 @@ def main():
     command = None
     while command != "quit":
         input_string = raw_input("HBA Database> ")
-        tokens = input_string.split(", ")
+        tokens = input_string.split()
         command = tokens[0]
         args = tokens[1:]
 
         if command == "student":
-            get_student_by_github(*args) 
+            print get_student_by_github(*args) 
         elif command == "new_student":
             make_new_student(*args)
         elif command == "project_details":
