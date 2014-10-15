@@ -12,7 +12,7 @@
         <th>Grade</th>
     </tr>
     {% for grade in grades %}
-        <tr><td><a href="localhost:5000/student/allgrades/"> {{grade[2]}}</a></td>
+        <tr><td><a href="/{{ grade[2] }}"> {{grade[2]}}</a></td>
         <td>{{grade[3]}}</td></tr>
         {% endfor %}
     </table>
